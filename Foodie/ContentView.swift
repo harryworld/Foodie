@@ -1,6 +1,15 @@
 import SwiftUI
 
 struct ContentView: View {
+    var foods = [
+        Food(image: "fruit_bowl", name: "Fruit Bowl", restaurant: "Pun Pun Market"),
+        Food(image: "papaya_salad", name: "Som Tum", restaurant: "Pun Pun Market"),
+        Food(image: "pencake", name: "Pencake", restaurant: "Pun Pun Market"),
+        Food(image: "mango_sticky_rice", name: "Mango Sticky Rice", restaurant: "Central Plaza Airport"),
+        Food(image: "pineapple_rice", name: "Pineapple Fried Rice", restaurant: "Cooking Love"),
+        Food(image: "thai_sausage", name: "Northern Thai Sausage", restaurant: "Saturday Night Market"),
+    ].shuffled()
+    
     var body: some View {
         VStack {
             Image(.foodie)
@@ -21,11 +30,13 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .frame(maxHeight: 600)
                 
-                CardView(
-                    image: "thai_sausage",
-                    food: "Northern Thai Sausage",
-                    restaurant: "Saturday Night Market"
-                )
+                ForEach(foods) { food in
+                    CardView(
+                        image: food.image,
+                        food: food.name,
+                        restaurant: food.restaurant
+                    )
+                }
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
