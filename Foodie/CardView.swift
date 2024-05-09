@@ -5,6 +5,8 @@ struct CardView: View {
     var food: String = "Papaya Salad"
     var restaurant: String = "Pun Pun Market"
     
+    @State var offset: CGSize = CGSize.zero
+    
     var body: some View {
         ZStack(alignment: .leading) {
             Image(image)
@@ -30,6 +32,22 @@ struct CardView: View {
         }
         .shadow(radius: 8)
         .padding()
+        .rotationEffect(Angle(degrees: Double(offset.width / 10)))
+        .offset(offset)
+        .gesture(
+            DragGesture()
+                .onChanged { self.offset = $0.translation }
+                .onEnded {
+                    if $0.translation.width < -100 {
+                        self.offset = .init(width: -1000, height: 0)
+                    } else if $0.translation.width > 100 {
+                        self.offset = .init(width: 1000, height: 0)
+                    } else {
+                        self.offset = .zero
+                    }
+                }
+        )
+        .animation(.default, value: offset)
     }
 }
 
