@@ -1,9 +1,13 @@
 import SwiftUI
 
 struct CardView: View {
+    var image: String = "papaya_salad"
+    var food: String = "Papaya Salad"
+    var restaurant: String = "Pun Pun Market"
+    
     var body: some View {
         ZStack(alignment: .leading) {
-            Image(.papayaSalad)
+            Image(image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 600)
@@ -12,11 +16,11 @@ struct CardView: View {
             VStack(alignment: .leading) {
                 Spacer()
                 
-                Text("Papaya Salad")
+                Text(food)
                     .font(.largeTitle)
                     .fontWeight(.heavy)
                 
-                Text("Pun Pun Market")
+                Text(restaurant)
                     .font(.body)
             }
             .frame(height: 600)

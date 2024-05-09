@@ -21,7 +21,11 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .frame(maxHeight: 600)
                 
-                CardView()
+                CardView(
+                    image: "thai_sausage",
+                    food: "Northern Thai Sausage",
+                    restaurant: "Saturday Night Market"
+                )
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
