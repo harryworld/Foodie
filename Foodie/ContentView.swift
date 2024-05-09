@@ -21,11 +21,7 @@ struct ContentView: View {
                 .fontWeight(.bold)
                 .frame(maxHeight: 600)
                 
-                VStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.blue)
-                        .frame(width: 300, height: 300)
-                }
+                CardView()
             }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
